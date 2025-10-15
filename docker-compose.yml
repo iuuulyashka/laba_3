@@ -1,0 +1,17 @@
+﻿services:
+  nginx:
+    image: nginx:alpine
+    container_name: laba3_nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./www:/var/www/html
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - php
+
+  php:
+    image: php:8.2-fpm
+    container_name: laba3_php
+    volumes:
+      - ./www:/var/www/html
